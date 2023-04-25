@@ -8,3 +8,5 @@ Useful for liteweight static websites that doen't need heavy server side intelli
 Just execute `run-scripts.sh` on your root folder from cron or manually.
 
 This script only gives permission to read or write parent folder of the script and `deno.land` and `esm.sh` network access.
+
+Log file is created per script with a `.log` extension.
