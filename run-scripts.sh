@@ -11,6 +11,7 @@ ALLOWED_WRITE_FOLDER=".."
 SCRIPT_FOLDER=".scripts"
 SCRIPT_NAME="*.[tj]s"
 ALLOW_NET="deno.land;esm.sh"
+deno="~/.deno/bin/deno"
 
 echo "Running scripts in $ROOT_FOLDER"
 
@@ -33,5 +34,5 @@ for path in $(find "$ROOT_FOLDER" \( -type d -path "**/$SCRIPT_FOLDER/*" -prune 
     echo "net permission  : $ALLOW_NET" | tee -a "$LOGFILE"
     echo "" | tee -a "$LOGFILE"
 
-    cd $DIR && deno run "--allow-net=$ALLOW_NET" "--allow-env" "--allow-read=$ALLOW_READ" "--allow-write=$ALLOW_WRITE" --no-prompt "$path" 2>&1 | tee -a "$LOGFILE"
+    cd $DIR && $deno run "--allow-net=$ALLOW_NET" "--allow-env" "--allow-read=$ALLOW_READ" "--allow-write=$ALLOW_WRITE" --no-prompt "$path" 2>&1 | tee -a "$LOGFILE"
 done;
